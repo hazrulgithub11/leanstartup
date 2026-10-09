@@ -1,0 +1,45 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Data source IDs are not secret. NOTION_TOKEN is. Set the token in the Netlify UI.
+# The same defaults live in shared/config.ts, which the function uses when an env var is unset.
+[context.production.environment]
+  NOTION_DS_IDEAS = "cb7a1003-54b9-41fa-9450-247a7a8ee734"
+  NOTION_DS_CANVAS = "afb98d87-94f4-47a0-9df7-6b1b81f99f1e"
+  NOTION_DS_ASSUMPTIONS = "4b355e57-9065-490a-a281-9badbe6a7f3d"
+  NOTION_DS_EXPERIMENTS = "9717f191-bab1-421e-bd2c-7d907c20a4bd"
+  NOTION_DS_LEARNINGS = "5c151b6d-48a2-4a6f-8c8d-7d7fc0945e41"
+
+[context.deploy-preview.environment]
+  NOTION_DS_IDEAS = "cb7a1003-54b9-41fa-9450-247a7a8ee734"
+  NOTION_DS_CANVAS = "afb98d87-94f4-47a0-9df7-6b1b81f99f1e"
+  NOTION_DS_ASSUMPTIONS = "4b355e57-9065-490a-a281-9badbe6a7f3d"
+  NOTION_DS_EXPERIMENTS = "9717f191-bab1-421e-bd2c-7d907c20a4bd"
+  NOTION_DS_LEARNINGS = "5c151b6d-48a2-4a6f-8c8d-7d7fc0945e41"
+
+[context.branch-deploy.environment]
+  NOTION_DS_IDEAS = "cb7a1003-54b9-41fa-9450-247a7a8ee734"
+  NOTION_DS_CANVAS = "afb98d87-94f4-47a0-9df7-6b1b81f99f1e"
+  NOTION_DS_ASSUMPTIONS = "4b355e57-9065-490a-a281-9badbe6a7f3d"
+  NOTION_DS_EXPERIMENTS = "9717f191-bab1-421e-bd2c-7d907c20a4bd"
+  NOTION_DS_LEARNINGS = "5c151b6d-48a2-4a6f-8c8d-7d7fc0945e41"
+
+[context.dev.environment]
+  NOTION_DS_IDEAS = "cb7a1003-54b9-41fa-9450-247a7a8ee734"
+  NOTION_DS_CANVAS = "afb98d87-94f4-47a0-9df7-6b1b81f99f1e"
+  NOTION_DS_ASSUMPTIONS = "4b355e57-9065-490a-a281-9badbe6a7f3d"
+  NOTION_DS_EXPERIMENTS = "9717f191-bab1-421e-bd2c-7d907c20a4bd"
+  NOTION_DS_LEARNINGS = "5c151b6d-48a2-4a6f-8c8d-7d7fc0945e41"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
